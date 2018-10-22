@@ -8,7 +8,9 @@
 6. Sistem menDisplay Ready State
 
 ### Extention / Alternative:
-1. Invalid identifier form login - Masukkan data dengan benar
-                                 - User mengulang input data login
-2. Gagal download data
+1a: User salah mengInput username dan password
+    .1 User mengulang input data login
+
+5a. Gagal download data perusahaan
+    .1 Sistem mendisplay Login State
 
