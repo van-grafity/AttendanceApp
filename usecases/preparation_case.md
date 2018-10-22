@@ -5,6 +5,7 @@
 3. Sistem mendisplay view Ready State
 
 ### Extention / Aternative:
-1a: Invalid Token.
-
-    .1 token sistem mendisplay Login State
+1a: Token tidak ada.
+    .1 Sistem mendisplay Login State
+2a: Token Expired.
+    .1 Sistem mendisplay Login State

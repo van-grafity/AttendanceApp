@@ -4,15 +4,19 @@
 2. Sistem meminta token ke service iPOS AUTH di cloud berdasarkan username dan password
 3. Sistem menyimpan token User
 4. Sistem mengecek data perusahaan si User
-5. Kalau belum ada sistem mendownload data perusahaan ke service attendance logger gateway di cloud
-6. Sistem menDisplay Ready State
+5. Sistem menDisplay Ready State
 
 ### Extention / Alternative:
-1a: User salah mengInput username dan password
+2a: Token tidak di dapat
 
-    .1 User mengulang input data login
+    .1 Sistem menDisplay error
+    .2 Sistem menDisplay login form
 
-5a. Gagal download data perusahaan
+4a: Data perusahaan tidak ada.
 
-    .1 Sistem mendisplay Login State
+    .1 sistem mendownload data perusahaan ke service attendance logger gateway di cloud
+
+4a.1a: Data tidak di temukan.
+
+    .1 Sistem mendisplay login form
 
