@@ -12,11 +12,11 @@
     .1 Sistem menDisplay error
     .2 Sistem menDisplay login form
 
-4a: Data perusahaan tidak ada.
+4a1: Data perusahaan tidak ada.
 
     .1 sistem mendownload data perusahaan ke service attendance logger gateway di cloud
 
-4a.1a: Data tidak di temukan.
+4a2: Data tidak di temukan.
 
     .1 Sistem mendisplay login form
 
