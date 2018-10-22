@@ -7,7 +7,6 @@
 5. Kalau belum ada sistem mendownload data perusahaan ke service attendance logger gateway di cloud
 6. Sistem menDisplay Ready State
 
-
 ### Extention / Alternative:
 1. Invalid identifier form login - Masukkan data dengan benar
                                  - User mengulang input data login
