@@ -9,8 +9,10 @@
 
 ### Extention / Alternative:
 1a: User salah mengInput username dan password
+
     .1 User mengulang input data login
 
 5a. Gagal download data perusahaan
+
     .1 Sistem mendisplay Login State
 
