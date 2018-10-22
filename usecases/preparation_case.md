@@ -1,6 +1,6 @@
 ### Main Success:
 
-1. Sistem mengecek Token ada atau tidak
+1. Sistem mengecek Token ada atau tidak dari shared preferance
 2. Sistem mengecek Token Expired atau tidak
 3. Sistem mendisplay view Ready State
 
