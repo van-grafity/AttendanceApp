@@ -6,7 +6,7 @@
 
 ### Extention / Aternative:
 1a: Token tidak ada
-    1. Sistem mendisplay Login State
+.1 Sistem mendisplay Login State
 
 2a: Token Expired
-    .1 Sistem mendisplay Login State
+ .1 Sistem mendisplay Login State
