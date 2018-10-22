@@ -5,4 +5,4 @@
 3. Sistem mendisplay view Ready State
 
 #### Extention / Aternative:
-Invalid Token   - Jika tidak ada token sistem mendisplay Login State
+1. Invalid Token   - Jika tidak ada token sistem mendisplay Login State
