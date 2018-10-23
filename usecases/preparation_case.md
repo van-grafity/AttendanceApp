@@ -4,7 +4,7 @@
 2. Sistem mengecek Token Expired atau tidak
 3. Sistem mendisplay view Ready State
 
-### Extention / Aternative:
+### Extention / Alternative:
 1a: Token tidak ada
 
     .1 Sistem mendisplay Login State
