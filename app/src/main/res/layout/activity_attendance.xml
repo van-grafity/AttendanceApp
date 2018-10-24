@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc"
@@ -9,23 +10,54 @@
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <TextView android:id="@+id/fullscreen_content"
+    <TextView
+        android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:keepScreenOn="true"
-        android:textColor="#33b5e5"
-        android:textStyle="bold"
-        android:textSize="50sp"
         android:gravity="center"
-        android:text="@string/attendance_content" />
+        android:keepScreenOn="true"
+        android:text="@string/attendance_content"
+        android:textColor="#33b5e5"
+        android:textSize="50sp"
+        android:textStyle="bold" />
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
-    <FrameLayout android:layout_width="match_parent"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-        <LinearLayout android:id="@+id/fullscreen_content_controls"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="username" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="password" />
+
+            <Button
+                android:id="@+id/button_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Button" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
             style="?metaButtonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,7 +66,8 @@
             android:orientation="horizontal"
             tools:ignore="UselessParent">
 
-            <Button android:id="@+id/attendance_button"
+            <Button
+                android:id="@+id/attendance_button"
                 style="?metaButtonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -42,6 +75,7 @@
                 android:text="@string/attendance_button" />
 
         </LinearLayout>
+
     </FrameLayout>
 
 </FrameLayout>
