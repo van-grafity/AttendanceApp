@@ -1,10 +1,11 @@
 package id.co.ipos.hadir.attlogger.Activity;
 
 import android.annotation.SuppressLint;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -40,9 +41,13 @@ public class AttendanceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Configuration config = getResources().getConfiguration();
+        /*if (config.smallestScreenWidthDp >= 600) {
+            setContentView(R.layout.activity_attendance);
+        } else {
+            setContentView(R.layout.activity_ready_state);
+        }*/
         setContentView(R.layout.activity_attendance);
-
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);

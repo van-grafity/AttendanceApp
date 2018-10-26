@@ -1,7 +1,7 @@
 package id.co.ipos.hadir.attlogger.Presenter;
 
 import id.co.ipos.hadir.attlogger.View.AttendanceView;
-import id.co.ipos.hadir.attlogger.View.TokenStore;
+import id.co.ipos.hadir.attlogger.Infrastruktur.TokenStore;
 
 public class AttendancePresenterImpl implements AttendancePresenter {
     private AttendanceView attendanceView;

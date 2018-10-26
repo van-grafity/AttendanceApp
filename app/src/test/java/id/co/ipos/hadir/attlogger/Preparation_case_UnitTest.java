@@ -8,7 +8,7 @@ import org.mockito.MockitoAnnotations;
 import id.co.ipos.hadir.attlogger.Presenter.AttendancePresenter;
 import id.co.ipos.hadir.attlogger.Presenter.AttendancePresenterImpl;
 import id.co.ipos.hadir.attlogger.View.AttendanceView;
-import id.co.ipos.hadir.attlogger.View.TokenStore;
+import id.co.ipos.hadir.attlogger.Infrastruktur.TokenStore;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -17,9 +17,12 @@ import static org.mockito.Mockito.when;
 
 public class Preparation_case_UnitTest {
 
-    @Mock private TokenStore m_tokenStore;
-    @Mock private AttendanceView m_attendanceView;
-    @Mock private AttendancePresenter m_presenter;
+    @Mock
+    private TokenStore m_tokenStore;
+    @Mock
+    private AttendanceView m_attendanceView;
+    @Mock
+    private AttendancePresenter m_presenter;
 
     @Before
     public void setUp() {
@@ -38,7 +41,7 @@ public class Preparation_case_UnitTest {
     }
 
     @Test
-    public void test_token_tidak_ada(){
+    public void test_token_tidak_ada() {
         when(m_tokenStore.isTokenExist()).thenReturn(false);
         m_presenter.prepare();
         verify(m_attendanceView, times(1)).showLoginState();
@@ -46,7 +49,7 @@ public class Preparation_case_UnitTest {
     }
 
     @Test
-    public void test_token_expired(){
+    public void test_token_expired() {
         when(m_tokenStore.isTokenExist()).thenReturn(true);
         when(m_tokenStore.isTokenExpired()).thenReturn(true);
         m_presenter.prepare();
