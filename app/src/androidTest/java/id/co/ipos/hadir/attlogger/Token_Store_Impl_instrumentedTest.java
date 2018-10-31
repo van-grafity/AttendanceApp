@@ -15,8 +15,6 @@ import id.co.ipos.hadir.attlogger.Infrastruktur.TokenStoreImpl;
 @RunWith(AndroidJUnit4.class)
 public class Token_Store_Impl_instrumentedTest {
 
-
-
     @Rule
     public ActivityTestRule<AttendanceActivity> attActivity =
             new ActivityTestRule<>(AttendanceActivity.class);

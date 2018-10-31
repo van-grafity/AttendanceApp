@@ -5,10 +5,10 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import id.co.ipos.hadir.attlogger.Infrastruktur.TokenStore;
 import id.co.ipos.hadir.attlogger.Presenter.AttendancePresenter;
 import id.co.ipos.hadir.attlogger.Presenter.AttendancePresenterImpl;
 import id.co.ipos.hadir.attlogger.View.AttendanceView;
-import id.co.ipos.hadir.attlogger.Infrastruktur.TokenStore;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;

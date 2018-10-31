@@ -11,7 +11,7 @@ public class TokenStoreImpl implements TokenStore {
 
     @Override
     public boolean isTokenExist() {
-        return true;
+        return false;
     }
 
     @Override
