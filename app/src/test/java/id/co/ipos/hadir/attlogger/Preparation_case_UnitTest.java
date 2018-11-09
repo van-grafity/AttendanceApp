@@ -5,10 +5,14 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import id.co.ipos.hadir.attlogger.Infrastruktur.Db.CompanyRepository;
+import id.co.ipos.hadir.attlogger.Infrastruktur.Net.IposAuth;
 import id.co.ipos.hadir.attlogger.Infrastruktur.TokenStore;
 import id.co.ipos.hadir.attlogger.Presenter.AttendancePresenter;
 import id.co.ipos.hadir.attlogger.Presenter.AttendancePresenterImpl;
 import id.co.ipos.hadir.attlogger.View.AttendanceView;
+import io.reactivex.Scheduler;
+import io.reactivex.schedulers.TestScheduler;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -23,11 +27,20 @@ public class Preparation_case_UnitTest {
     private AttendanceView m_attendanceView;
     @Mock
     private AttendancePresenter m_presenter;
+    @Mock
+    private IposAuth m_iposAuth;
+    @Mock
+    private CompanyRepository m_companyRepository;
+
+        public Scheduler proccess_android_Scheduler;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        m_presenter = new AttendancePresenterImpl(m_attendanceView, m_tokenStore);
+        proccess_android_Scheduler = new TestScheduler();
+        m_presenter = new AttendancePresenterImpl(
+                m_attendanceView, m_tokenStore, m_iposAuth, m_companyRepository,
+                proccess_android_Scheduler, proccess_android_Scheduler);
     }
 
     @Test

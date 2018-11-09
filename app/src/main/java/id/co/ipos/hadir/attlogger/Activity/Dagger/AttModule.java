@@ -15,7 +15,7 @@ public class AttModule {
     @AttScope
     @Provides
     AttendancePresenter provideAttendancePresenter(AttendanceView attendanceView, TokenStore tokenStore){
-        return new AttendancePresenterImpl(attendanceView, tokenStore);
+        return new AttendancePresenterImpl(attendanceView, tokenStore, null, null, null, null);
     }
     @AttScope
     @Provides

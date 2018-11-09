@@ -21,13 +21,15 @@ public class AttendanceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         hideActionBar();
-
         injectDependenciesUsingDagger();
-
         this.attendancePresenter.prepare();
     }
 
     private void injectDependenciesUsingDagger() {
+        DaggerAttActivity();
+    }
+
+    private void DaggerAttActivity() {
         AppAttendanceComponent appComp=((AppContext)getApplication()).getAppAttendanceComponent();
         DaggerAttComponent.builder()
                 .appAttendanceComponent(appComp)
@@ -41,6 +43,7 @@ public class AttendanceActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
+
     }
 
 

@@ -13,9 +13,7 @@ public class AppContext extends Application{
     public void onCreate() {
         super.onCreate();
         initAppComponent();
-
-        //appAttendanceComponent=this.createAppAttendanceComponent();
-    }
+        }
 
     private void initAppComponent() {
         appAttendanceComponent = DaggerAppAttendanceComponent.builder()
@@ -23,12 +21,6 @@ public class AppContext extends Application{
                 .build();
     }
 
-    /*private AppAttendanceComponent createAppAttendanceComponent(){
-        return DaggerAppAttendanceComponent
-                .builder()
-                .appContextModule(new AppContextModule(this))
-                .build();
-    }*/
     public AppAttendanceComponent getAppAttendanceComponent(){
         return appAttendanceComponent;
     }

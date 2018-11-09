@@ -9,6 +9,7 @@ import id.co.ipos.hadir.attlogger.Infrastruktur.TokenStoreImpl;
 
 @Module
 public class TokenStoreModule {
+
     @Provides
     TokenStore provideTokenStoreImpl(Context applicationContext){
         return new TokenStoreImpl(applicationContext);
