@@ -15,6 +15,10 @@ public class AttendancePresenterImpl implements AttendancePresenter {
     private CompanyRepository m_companyRepository;
     private Scheduler processScheduler;
     private Scheduler androidScheduler;
+
+    public AttendancePresenterImpl() {
+    }
+
     public AttendancePresenterImpl(AttendanceView attendanceView, TokenStore tokenStore,
                                    IposAuth iposAuth, CompanyRepository companyRepository,
                                    Scheduler androidScheduler, Scheduler processScheduler) {
@@ -44,25 +48,22 @@ public class AttendancePresenterImpl implements AttendancePresenter {
         iPosAuth.getToken(username, password)
                 .subscribeOn(processScheduler)
                 .observeOn(androidScheduler)
-                //.subscribe(x->successLogin(x), err->errorLogin(err));
-                .subscribe(x->{successLogin(x);},err ->{errorLogin(err);
-                }
-                );
+                .subscribe(x->successLogin(x),err ->errorLogin(err));
     }
 
     private void errorLogin(Throwable err) {
-        this.attendanceView.showDisplayError();
+        this.attendanceView.showDisplayError(err.getMessage());
     }
 
     private void successLogin(Token token){
         tokenStore.saveToken(token);
 
-            if (!this.m_companyRepository.isCompanyExist()){
-                this.attendanceView.downloadData();
+        if (!this.m_companyRepository.isCompanyExist()){
+            this.attendanceView.downloadData();
 
-            }else{
-                this.attendanceView.showReadyState();
-            }
+        }else{
+            this.attendanceView.showReadyState();
+        }
 
     }
 }

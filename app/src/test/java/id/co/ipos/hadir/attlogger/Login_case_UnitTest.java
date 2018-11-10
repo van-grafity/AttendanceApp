@@ -1,15 +1,18 @@
 package id.co.ipos.hadir.attlogger;
 
-import android.security.keystore.UserNotAuthenticatedException;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
+
 
 import id.co.ipos.hadir.attlogger.Infrastruktur.Db.CompanyRepository;
 import id.co.ipos.hadir.attlogger.Infrastruktur.Net.IposAuth;
 import id.co.ipos.hadir.attlogger.Infrastruktur.Net.Token;
 import id.co.ipos.hadir.attlogger.Infrastruktur.TokenStore;
-import id.co.ipos.hadir.attlogger.Presenter.AttendancePresenter;
 import id.co.ipos.hadir.attlogger.Presenter.AttendancePresenterImpl;
 import id.co.ipos.hadir.attlogger.View.AttendanceView;
 import io.reactivex.Observable;
@@ -24,23 +27,24 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class Login_case_UnitTest {
+
+    @InjectMocks
+    private AttendancePresenterImpl m_presenter;
+    @Mock
     private AttendanceView m_attendanceView;
-    private AttendancePresenter m_presenter;
+    @Mock
     private TokenStore m_tokenStore;
+    @Mock
     private IposAuth m_iposAuth;
+    @Mock
     private CompanyRepository m_companyRepository;
-    public Scheduler testScheduler;
+    @Spy
+    public Scheduler testScheduler=new TestScheduler();
 
 
     @Before
     public void initMock(){
-        m_attendanceView = mock(AttendanceView.class);
-        m_presenter = mock(AttendancePresenter.class);
-        m_tokenStore = mock(TokenStore.class);
-        m_iposAuth = mock(IposAuth.class);
-        m_companyRepository = mock(CompanyRepository.class);
-        testScheduler = new TestScheduler();
-        m_presenter = new AttendancePresenterImpl(m_attendanceView, m_tokenStore, m_iposAuth, m_companyRepository, testScheduler, testScheduler);
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
@@ -50,18 +54,20 @@ public class Login_case_UnitTest {
         when(m_attendanceView.getPassword()).thenReturn("123");
         when(m_companyRepository.isCompanyExist()).thenReturn(true);
         m_presenter.login();
+        ((TestScheduler)testScheduler).triggerActions();
         verify(m_tokenStore, times(1)).saveToken(isA(Token.class));
         verify(m_attendanceView, times(1)).showReadyState();
     }
 
     @Test
     public void test_jika_token_tidak_didapat() {
-        doReturn(Observable.error(new UserNotAuthenticatedException("username atau password salah"))).when(m_iposAuth).getToken("user", "123");
+        String error="username atau password salah";
+        doReturn(Observable.error(new UserAuthenticationException(error))).when(m_iposAuth).getToken("user", "123");
         when(m_attendanceView.getUsername()).thenReturn("user");
         when(m_attendanceView.getPassword()).thenReturn("123");
-        //when(m_iposAuth.getToken("user", "123")).thenReturn(null);
         m_presenter.login();
-        verify(m_attendanceView, times(1)).showDisplayError();
+        ((TestScheduler)testScheduler).triggerActions();
+        verify(m_attendanceView, times(1)).showDisplayError(error);
     }
 
     @Test
@@ -71,6 +77,7 @@ public class Login_case_UnitTest {
         doReturn(Observable.just(new Token())).when(m_iposAuth).getToken("user", "123");
         when(m_companyRepository.isCompanyExist()).thenReturn(true);
         m_presenter.login();
+        ((TestScheduler)testScheduler).triggerActions();
         verify(m_tokenStore, times(1)).saveToken(isA(Token.class));
         verify(m_attendanceView, times(1)).showReadyState();
     }
@@ -82,7 +89,13 @@ public class Login_case_UnitTest {
         doReturn(Observable.just(new Token())).when(m_iposAuth).getToken("user", "123");
         when(m_companyRepository.isCompanyExist()).thenReturn(false);
         m_presenter.login();
+        ((TestScheduler)testScheduler).triggerActions();
         verify(m_attendanceView, times(1)).downloadData();
     }
 
+    private class UserAuthenticationException extends Throwable  {
+        public UserAuthenticationException(String error) {
+            super(error);
+        }
+    }
 }

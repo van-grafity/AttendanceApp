@@ -49,7 +49,7 @@ public class AttendanceViewImpl implements AttendanceView {
     }
 
     @Override
-    public void showDisplayError() {
+    public void showDisplayError(String errorMesssage) {
         String error = "Error";
 
     }

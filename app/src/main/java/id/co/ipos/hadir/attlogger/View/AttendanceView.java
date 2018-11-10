@@ -9,7 +9,7 @@ public interface AttendanceView {
 
     String getPassword();
 
-    void showDisplayError();
+    void showDisplayError(String errorMessage);
 
     void downloadData();
 }
