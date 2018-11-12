@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AttLogger</string>
+
+    <string name="attendance_button">Attendace Button</string>
+    <string name="attendance_content">ATTENDANCE\nCONTENT</string>
+    <string name="ready">READY</string>
+    <string name="login">Login</string>
+    <string name="password">password</string>
+    <string name="username">username</string>
+</resources>
