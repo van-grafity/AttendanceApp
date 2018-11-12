@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import javax.inject.Inject;
 
 import id.co.ipos.hadir.attlogger.Activity.Dagger.AttContextModule;
+import id.co.ipos.hadir.attlogger.Activity.Dagger.AttModule;
 import id.co.ipos.hadir.attlogger.Activity.Dagger.DaggerAttComponent;
 import id.co.ipos.hadir.attlogger.Application.AppContext;
 import id.co.ipos.hadir.attlogger.Application.Dagger.AppAttendanceComponent;
@@ -34,6 +35,7 @@ public class AttendanceActivity extends AppCompatActivity {
         DaggerAttComponent.builder()
                 .appAttendanceComponent(appComp)
                 .attContextModule(new AttContextModule(this))
+                .attModule(new AttModule())
                 .build()
                 .inject(this);
     }

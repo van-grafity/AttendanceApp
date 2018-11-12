@@ -1,5 +1,7 @@
 package id.co.ipos.hadir.attlogger.Presenter;
 
+import javax.inject.Inject;
+
 import id.co.ipos.hadir.attlogger.Infrastruktur.Db.CompanyRepository;
 import id.co.ipos.hadir.attlogger.Infrastruktur.Net.IposAuth;
 import id.co.ipos.hadir.attlogger.Infrastruktur.Net.Token;
@@ -8,26 +10,23 @@ import id.co.ipos.hadir.attlogger.View.AttendanceView;
 import io.reactivex.Scheduler;
 
 public class AttendancePresenterImpl implements AttendancePresenter {
+    @Inject
+    AttendanceView attendanceView;
+    @Inject
+    TokenStore tokenStore;
+    @Inject
+    IposAuth iPosAuth;
+    @Inject
+     CompanyRepository m_companyRepository;
+    @Inject
+     Scheduler processScheduler;
+    @Inject
+     Scheduler androidScheduler;
 
-    private AttendanceView attendanceView;
-    private TokenStore tokenStore;
-    private IposAuth iPosAuth;
-    private CompanyRepository m_companyRepository;
-    private Scheduler processScheduler;
-    private Scheduler androidScheduler;
 
+    @Inject
     public AttendancePresenterImpl() {
-    }
 
-    public AttendancePresenterImpl(AttendanceView attendanceView, TokenStore tokenStore,
-                                   IposAuth iposAuth, CompanyRepository companyRepository,
-                                   Scheduler androidScheduler, Scheduler processScheduler) {
-        this.attendanceView = attendanceView;
-        this.tokenStore = tokenStore;
-        this.iPosAuth = iposAuth;
-        this.m_companyRepository = companyRepository;
-        this.processScheduler = processScheduler;
-        this.androidScheduler = androidScheduler;
     }
 
     @Override

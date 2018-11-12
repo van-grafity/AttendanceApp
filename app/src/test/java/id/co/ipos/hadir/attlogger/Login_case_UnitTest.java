@@ -8,7 +8,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
-
 import id.co.ipos.hadir.attlogger.Infrastruktur.Db.CompanyRepository;
 import id.co.ipos.hadir.attlogger.Infrastruktur.Net.IposAuth;
 import id.co.ipos.hadir.attlogger.Infrastruktur.Net.Token;
@@ -21,7 +20,6 @@ import io.reactivex.schedulers.TestScheduler;
 
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -39,11 +37,17 @@ public class Login_case_UnitTest {
     @Mock
     private CompanyRepository m_companyRepository;
     @Spy
-    public Scheduler testScheduler=new TestScheduler();
+    private Scheduler processScheduler;
+    @Spy
+    private Scheduler androidScheduler;
+
+    private Scheduler testScheduler=new TestScheduler();
 
 
     @Before
     public void initMock(){
+        processScheduler=testScheduler;
+        androidScheduler=testScheduler;
         MockitoAnnotations.initMocks(this);
     }
 
